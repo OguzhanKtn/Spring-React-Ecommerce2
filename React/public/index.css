@@ -1,0 +1,41 @@
+.navbar{
+    border-radius: 8px;
+    margin-top: 0.75rem;
+    background-color: rgba(22, 168, 54, 0.95);
+    box-shadow: rgba(50, 71, 92, 0.1) 0px 2px 10px 0px;
+    padding: 0rem 1.5rem;
+    min-height: 64px;
+    position: fixed;
+}
+
+.btne{
+    margin-left: 30px;
+    margin-top: 5px;
+    color: #f3ebeb;
+    font-size: 20px;
+   text-decoration: none;
+}
+.btne:hover,.dropdown:hover,.kategori-text:hover{
+    color: #f2eb0d;
+}
+
+.dropdown{
+    margin-left: 30px;
+}
+
+.kategori-text{
+    color: #f3ebeb;
+    font-size: 19px;
+}
+
+.dropdown:hover .dropdown-menu{
+    display: block;
+}
+
+.dropdown-item:hover .item-text{
+    color: #f2eb0d;
+}
+
+.dropdown2:hover .dropdown-menu{
+    display: block;
+}
