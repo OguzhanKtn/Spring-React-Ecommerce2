@@ -8,14 +8,15 @@
     position: fixed;
 }
 
-.btne{
+.anasayfa{
     margin-left: 30px;
     margin-top: 5px;
     color: #f3ebeb;
     font-size: 20px;
    text-decoration: none;
 }
-.btne:hover,.dropdown:hover,.kategori-text:hover{
+
+.anasayfa:hover,.dropdown:hover,.kategori-text:hover{
     color: #f2eb0d;
 }
 
@@ -39,3 +40,33 @@
 .dropdown2:hover .dropdown-menu{
     display: block;
 }
+
+@media screen and (max-width:767px) {
+    #search{
+        display: none;
+    }
+}
+
+@media screen and (min-width:500px) {
+    #firstNavbar{
+        display: block;
+    }
+    #secondNavbar{
+        display: none;
+    }
+
+    #search{
+        width: auto;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    #firstNavbar{
+        display: none;
+    }
+    #secondNavbar{
+        display: block;
+    }
+}
+
