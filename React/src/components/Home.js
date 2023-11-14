@@ -6,7 +6,7 @@ function Home() {
     <>
       <div className="container">
         <div className="navbar" id="firstNavbar">
-          <div className="d-flex" style={{justifyContent: "space-between"}}>
+          <div className="d-flex" style={{ justifyContent: "space-between" }}>
             <NavLink to={"/"} role="button" className="anasayfa">
               Anasayfa
             </NavLink>
@@ -130,22 +130,19 @@ function Home() {
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a class="dropdown-item" href="#">
-                          Action
-                        </a>
+                        <NavLink className="dropdown-item" to={"/action"}>
+                          <span className="item-text">Action</span>
+                        </NavLink>
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
-                          Another action
-                        </a>
+                        <NavLink className="dropdown-item" to={"/another"}>
+                          <span className="item-text">Another action</span>
+                        </NavLink>
                       </li>
                       <li>
-                        <hr class="dropdown-divider" />
-                      </li>
-                      <li>
-                        <a class="dropdown-item" href="#">
-                          Something else here
-                        </a>
+                        <NavLink className="dropdown-item" to={"/sth"}>
+                          <span className="item-text">Something else here</span>
+                        </NavLink>
                       </li>
                     </ul>
                   </li>
@@ -161,17 +158,17 @@ function Home() {
                     </a>
                     <ul class="dropdown-menu">
                       <li>
-                        <a class="dropdown-item" href="#">
-                          Oturum aç
-                        </a>
+                        <NavLink className="dropdown-item" to={"/login"}>
+                          <span className="item-text">Oturum aç</span>
+                        </NavLink>
                       </li>
                       <li>
                         <hr class="dropdown-divider" />
                       </li>
                       <li>
-                        <a class="dropdown-item" href="#">
-                          Kayıt ol
-                        </a>
+                        <NavLink className="dropdown-item" to={"/register"}>
+                          <span className="item-text">Kayıt ol</span>
+                        </NavLink>
                       </li>
                     </ul>
                   </li>

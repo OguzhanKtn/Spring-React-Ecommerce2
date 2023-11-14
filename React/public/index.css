@@ -70,3 +70,46 @@
     }
 }
 
+.login{
+    background-color: rgb(5, 5, 5);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    padding: 50px 50px 50px 50px;
+    height: 350px;
+    width: 500px;
+    margin: auto;
+    margin-top: 50px;    
+}
+
+.giris{
+    margin-left: 130px;
+    color: #f3ebeb;
+}
+
+.h3{
+    margin-left: 90px;
+}
+
+#girisBtn{
+   width: 100%;
+   border-radius: 20px;
+}
+
+#register{
+    display: flex;
+    justify-content: center;
+    padding-top: 40px;
+    padding-bottom: 350px;
+}
+
+#registerShadow{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 50px 50px 50px 50px
+}
+
+#submit{
+    width: 100%;
+    border-radius: 20px;
+}
