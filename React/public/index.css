@@ -71,7 +71,7 @@
 }
 
 .login{
-    background-color: rgb(5, 5, 5);
+    background-color: white;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     border-radius: 10px;
     padding: 50px 50px 50px 50px;
@@ -83,7 +83,7 @@
 
 .giris{
     margin-left: 130px;
-    color: #f3ebeb;
+    color: black
 }
 
 .h3{
