@@ -15,7 +15,6 @@ import java.util.function.Function;
 @Service
 public class JwtUtil {
     // hash işlemi yaparken kullanılacak key
-
     private String SECRET_KEY ="key123";
 
     // verilen token a ait kullanıcı adını döndürür.

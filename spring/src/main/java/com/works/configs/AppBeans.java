@@ -12,4 +12,5 @@ public class AppBeans {
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
 }
