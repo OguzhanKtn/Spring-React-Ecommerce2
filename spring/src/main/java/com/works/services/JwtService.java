@@ -1,5 +1,6 @@
 package com.works.services;
 
+import com.works.entities.User;
 import com.works.models.JwtLogin;
 import com.works.utils.JwtUtil;
 import lombok.RequiredArgsConstructor;
@@ -30,10 +31,11 @@ public class JwtService {
                     jwtLogin.getUsername(), jwtLogin.getPassword()
             ) );
             UserDetails userDetails = userService.loadUserByUsername(jwtLogin.getUsername());
+            User user = userService.login(jwtLogin.getUsername());
             String jwt = jwtUtil.generateToken(userDetails);
             hm.put("status", true);
             hm.put( "jwt", jwt );
-            hm.put("result", userDetails);
+            hm.put("result", user);
             return new ResponseEntity(hm, HttpStatus.OK);
         }catch (Exception ex) {
             hm.put( "status", false);

@@ -38,6 +38,14 @@ public class UserService implements UserDetailsService {
         }
     }
 
+    public User login(String username){
+        Optional<User> user = userRepository.findByEmailEqualsIgnoreCase(username);
+        if(user.isPresent()){
+            return user.get();
+        }
+        return null;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
        Optional<User> optionalUser = userRepository.findByEmailEqualsIgnoreCase(username);
