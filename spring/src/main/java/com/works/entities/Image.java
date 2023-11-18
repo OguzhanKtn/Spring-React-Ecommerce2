@@ -3,7 +3,7 @@ package com.works.entities;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.sql.Blob;
+
 
 @Entity
 @Data
@@ -16,5 +16,5 @@ public class Image {
     private Long pid;
 
     @Lob
-    private Blob image;
+    private byte[] image;
 }
