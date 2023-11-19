@@ -11,7 +11,7 @@ public class JwtLogin {
 
     @NotNull
     @Email
-    private String username;
+    private String email;
 
     @NotNull
     @Size(min = 8)

@@ -28,10 +28,10 @@ public class JwtService {
         Map<String, Object> hm = new LinkedHashMap<>();
         try {
             authenticationManager.authenticate( new UsernamePasswordAuthenticationToken(
-                    jwtLogin.getUsername(), jwtLogin.getPassword()
+                    jwtLogin.getEmail(), jwtLogin.getPassword()
             ) );
-            UserDetails userDetails = userService.loadUserByUsername(jwtLogin.getUsername());
-            User user = userService.login(jwtLogin.getUsername());
+            UserDetails userDetails = userService.loadUserByUsername(jwtLogin.getEmail());
+            User user = userService.login(jwtLogin.getEmail());
             String jwt = jwtUtil.generateToken(userDetails);
             hm.put("status", true);
             hm.put( "jwt", jwt );

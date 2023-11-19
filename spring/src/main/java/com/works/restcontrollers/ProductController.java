@@ -12,7 +12,7 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 @RequestMapping("/product")
 @CrossOrigin
-public class ProductRestController {
+public class ProductController {
 
     final ProductService productService;
 

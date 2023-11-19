@@ -1,4 +1,7 @@
 import React,{useState} from "react";
+import { register } from '../services/RegisterService'
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 function Register() {
 
@@ -7,12 +10,26 @@ function Register() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const navigate = useNavigate()
+
+    const sendForm = async(evt)=>{
+      evt.preventDefault()
+      try {
+        await register(name,surname,email,password).then(res =>{
+          toast.success("User has registered.")
+        })   
+        navigate("/")
+      } catch (error) {
+        toast.error(error)
+      }
+      
+    }
   return (
     <>
       <div className="register-page" id="register">
         <div className="row">
           <div className="col-sm-4"></div>
-          <form onSubmit="" id="registerShadow">
+          <form onSubmit={sendForm} id="registerShadow">
             <h2 className="h3 mb-3 font-weight-normal"><strong>KAYIT</strong></h2>
             <div className="mb-3">
               <label className="form-label">Name</label>
