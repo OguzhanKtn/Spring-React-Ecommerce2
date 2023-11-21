@@ -16,7 +16,7 @@
    text-decoration: none;
 }
 
-.anasayfa:hover,.dropdown:hover,.kategori-text:hover{
+.anasayfa:hover,.dropdown:hover,.kategori-text:hover,.item-btn:hover{
     color: #f2eb0d;
 }
 
@@ -116,4 +116,15 @@
 
 /*iframe{
     display: none;
+}*/
+
+#hosgeldin{
+    margin:auto;
+    color: #f3ebeb;
+    font-size: 15px;
+}
+
+.item-btn{
+    color: #f3ebeb;
+    font-size: 20px;
 }

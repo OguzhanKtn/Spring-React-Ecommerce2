@@ -6,6 +6,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import { Flip, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Basket from "./components/Basket";
 
 const router = (
   <BrowserRouter>
@@ -14,6 +15,7 @@ const router = (
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/basket" element={<Basket/>} />
     </Routes>
   </BrowserRouter>
 );

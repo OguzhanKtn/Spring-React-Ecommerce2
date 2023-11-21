@@ -4,7 +4,7 @@ import { login } from '../services/LoginService'
 import { encrypt } from '../util'
 import { toast } from "react-toastify";
 
-function Login(props) {
+function Login() {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')

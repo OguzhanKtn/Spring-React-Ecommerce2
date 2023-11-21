@@ -1,10 +1,8 @@
 import React from "react";
 import { decrypt } from '../util'
-import { useNavigate } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 function SignedIn(props) {
-
-   const navigate = useNavigate()
 
     const stSession = sessionStorage.getItem('user')
     if(stSession){
@@ -14,9 +12,12 @@ function SignedIn(props) {
    
   return (
     <div className="d-flex">
-        <p>Hoşgeldin {user && user.name}</p>
+        <p id="hosgeldin">Hoşgeldin {user && user.name} !</p>
+        <NavLink to={"/basket"} role="button" className="anasayfa">
+              Sepete git
+            </NavLink>
       <button onClick={props.SignOut} className="btn" >
-        <span className="item-text">Çıkış Yap</span>
+        <span className="item-btn">Çıkış Yap</span>
       </button>
     </div>
   );
