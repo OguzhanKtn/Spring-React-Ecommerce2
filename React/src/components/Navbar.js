@@ -1,14 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink} from "react-router-dom";
 import { categoryList } from "../services/CategoryService";
 import SignedOut from "./SignedOut";
 import SignedIn from "./SignedIn";
 
 function Navbar() {
   const [categories, setCategories] = useState([]);
+  const [isAuthenticated,setIsAuthenticated] = useState(false);
 
-  useEffect(async () => {
-    await categoryList().then((res) => {
+  const session = sessionStorage.getItem('jwt')
+
+  function handleSignOut(){
+    setIsAuthenticated(false)
+    sessionStorage.removeItem('jwt')
+    sessionStorage.removeItem('user')
+  }
+ 
+  useEffect(() => {
+    if(session){
+      setIsAuthenticated(true)
+    }
+      categoryList().then((res) => {
       setCategories(res.data.result);
     });
   }, []);
@@ -32,7 +44,7 @@ function Navbar() {
               </button>
               <ul class="dropdown-menu">
                 {categories.map((item, index) => (
-                  <li>
+                  <li key={index}>
                     <NavLink
                       className="dropdown-item"
                       to={"/category/" + item.cid}
@@ -57,8 +69,7 @@ function Navbar() {
                 <span style={{ color: "white" }}>Ara</span>
               </button>
             </form>
-            <SignedIn/>
-           <SignedOut/>
+            {isAuthenticated?<SignedIn SignOut={handleSignOut}/>:<SignedOut/>} 
           </div>
         </div>
         <nav class="navbar bg-body-tertiary fixed-top" id="secondNavbar">
@@ -106,7 +117,7 @@ function Navbar() {
                     </a>
                     <ul class="dropdown-menu">
                       {categories.map((item, index) => (
-                        <li>
+                        <li key={index}>
                           <NavLink
                             className="dropdown-item"
                             to={"/category/" + item.cid}

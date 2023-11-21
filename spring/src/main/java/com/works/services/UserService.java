@@ -28,11 +28,16 @@ public class UserService implements UserDetailsService {
 
     public User register(User user){
         Optional<User> optionalUser = userRepository.findByEmailEqualsIgnoreCase(user.getEmail());
+        List<Role> roles = new ArrayList<>();
+        Role role = new Role();
+        role.setRid(2l);
+        roles.add(role);
         if(optionalUser.isPresent()){
             return null;
         }else{
             String newPassword = passwordEncoder.encode(user.getPassword());
             user.setPassword(newPassword);
+            user.setRoles(roles);
             userRepository.save(user);
             return user;
         }

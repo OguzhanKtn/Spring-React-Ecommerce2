@@ -4,17 +4,17 @@ import { login } from '../services/LoginService'
 import { encrypt } from '../util'
 import { toast } from "react-toastify";
 
-function Login() {
+function Login(props) {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   const navigate = useNavigate()
 
-  const sendForm = async(evt)=>{
+  const sendForm =(evt)=>{
     evt.preventDefault()
      try {
-      await login(email,password).then(res=>{
+      login(email,password).then(res=>{
       sessionStorage.setItem('jwt',res.data.jwt)
       const stData = JSON.stringify(res.data.result)
       const cipherText = encrypt(stData)
