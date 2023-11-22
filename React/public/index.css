@@ -16,7 +16,7 @@
    text-decoration: none;
 }
 
-.anasayfa:hover,.dropdown:hover,.kategori-text:hover,.item-btn:hover{
+.anasayfa:hover,.dropdown:hover,.kategori-text:hover,.item-btn:hover,.sepet:hover,#anasayfa:hover,#kategoriler:hover{
     color: #f2eb0d;
 }
 
@@ -57,6 +57,24 @@
 
     #search{
         width: auto;
+    }
+    #hosgeldin{
+        margin:auto;
+        color: #f3ebeb;
+        font-size: 15px;
+        margin-bottom: -10px;
+    }
+    
+    .item-btn{
+        color: #f3ebeb;
+        font-size: 20px;
+    }
+    .sepet{
+        margin-left: 30px;
+        margin-top: 5px;
+        color: #f3ebeb;
+        font-size: 20px;
+       text-decoration: none;
     }
 }
 
@@ -118,13 +136,3 @@
     display: none;
 }*/
 
-#hosgeldin{
-    margin:auto;
-    color: #f3ebeb;
-    font-size: 15px;
-}
-
-.item-btn{
-    color: #f3ebeb;
-    font-size: 20px;
-}

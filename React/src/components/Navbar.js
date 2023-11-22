@@ -98,10 +98,10 @@ function Navbar() {
                   aria-label="Close"
                 ></button>
               </div>
-              <div class="offcanvas-body">
+              <div class="offcanvas-body" style={{backgroundColor:"black"}}>
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                   <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">
+                    <a class="nav-link active" style={{color:"white"}} aria-current="page" href="/" id="anasayfa">
                       Anasayfa
                     </a>
                   </li>
@@ -112,6 +112,8 @@ function Navbar() {
                       role="button"
                       data-bs-toggle="dropdown"
                       aria-expanded="false"
+                      style={{color:"white"}}
+                      id="kategoriler"
                     >
                       Kategoriler
                     </a>
@@ -130,32 +132,7 @@ function Navbar() {
                       ))}
                     </ul>
                   </li>
-                  <li class="nav-item dropdown3">
-                    <a
-                      class="nav-link dropdown-toggle"
-                      href="#"
-                      role="button"
-                      data-bs-toggle="dropdown"
-                      aria-expanded="false"
-                    >
-                      GİRİŞ YAP
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li>
-                        <NavLink className="dropdown-item" to={"/login"}>
-                          <span className="item-text">Oturum aç</span>
-                        </NavLink>
-                      </li>
-                      <li>
-                        <hr class="dropdown-divider" />
-                      </li>
-                      <li>
-                        <NavLink className="dropdown-item" to={"/register"}>
-                          <span className="item-text">Kayıt ol</span>
-                        </NavLink>
-                      </li>
-                    </ul>
-                  </li>
+                  {isAuthenticated?<SignedIn SignOut={handleSignOut}/>:<SignedOut/>} 
                 </ul>
                 <form class="d-flex mt-3" role="search">
                   <input

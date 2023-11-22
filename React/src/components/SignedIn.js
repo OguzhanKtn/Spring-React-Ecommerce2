@@ -12,13 +12,19 @@ function SignedIn(props) {
    
   return (
     <div className="d-flex">
-        <p id="hosgeldin">Hoşgeldin {user && user.name} !</p>
-        <NavLink to={"/basket"} role="button" className="anasayfa">
+        <div style={{margin:"auto",marginRight:"20px"}}>
+        
+        <NavLink to={"/basket"} role="button" className="sepet">
+        <i className="bi bi-cart3"></i>
               Sepete git
             </NavLink>
-      <button onClick={props.SignOut} className="btn" >
-        <span className="item-btn">Çıkış Yap</span>
+        </div> 
+       <div style={{margin:"auto"}}>
+       <p id="hosgeldin">Hoşgeldin {user && user.name} !</p>
+       <button onClick={props.SignOut} className="btn" >
+        <span className="item-btn" style={{marginLeft:"15px"}}>Çıkış Yap</span>
       </button>
+        </div>        
     </div>
   );
 }
