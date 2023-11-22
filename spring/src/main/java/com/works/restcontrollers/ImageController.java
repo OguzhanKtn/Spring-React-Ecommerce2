@@ -5,6 +5,12 @@ import com.works.services.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.sql.rowset.serial.SerialBlob;
+import java.io.IOException;
+import java.sql.Blob;
+import java.sql.SQLException;
 
 @RestController
 @RequestMapping("/image")
@@ -14,8 +20,12 @@ public class ImageController {
 
     final ImageService imageService;
 
-    @PostMapping("/save")
-    public ResponseEntity save(@RequestBody Image image){
+    @PostMapping(value = "/save" , consumes = { "multipart/form-data"} )
+    public ResponseEntity save(@RequestParam("image") MultipartFile file) throws SQLException, IOException {
+        Image image = new Image();
+        byte[] fileBytes = file.getBytes();
+        Blob blob = new SerialBlob(fileBytes);
+        image.setImage(blob);
         return imageService.save(image);
     }
 

@@ -5,10 +5,9 @@ const config = axios.create({
     timeout:15000
 })
 
-export const imageSave = (image,id)=>{
+export const imageSave = (image)=>{
     const sendObj ={
         image:image,
-        id:id
     }
  return config.post('image/save',sendObj)
 }
