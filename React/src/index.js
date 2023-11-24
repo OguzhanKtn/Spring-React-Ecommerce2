@@ -8,6 +8,7 @@ import { Flip, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Basket from "./components/Basket";
 import ImageAdd from "./adminPanel/ImageAdd";
+import ProductAdd from "./adminPanel/ProductAdd";
 
 const router = (
   <BrowserRouter>
@@ -18,6 +19,7 @@ const router = (
       <Route path="/register" element={<Register />} />
       <Route path="/basket" element={<Basket/>} />
       <Route path="/imageAdd" element={<ImageAdd/>} />
+      <Route path="/productManager" element={<ProductAdd/>}/>
     </Routes>
   </BrowserRouter>
 );
