@@ -5,8 +5,6 @@ import com.works.entities.Product;
 import com.works.entities.projections.IProductCategory;
 import com.works.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -71,8 +69,8 @@ public class ProductService {
         return null;
     }
 
-    public ResponseEntity allProducts(int page){
-        Page<Product> products = productRepository.findAll(PageRequest.of(page,12));
+    public ResponseEntity allProducts(){
+        List<Product> products = productRepository.findAll();
         HashMap map = new HashMap<>();
         map.put("products",products);
         try{

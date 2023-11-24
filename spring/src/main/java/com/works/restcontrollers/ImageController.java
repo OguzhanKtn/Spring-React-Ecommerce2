@@ -20,9 +20,10 @@ public class ImageController {
 
     final ImageService imageService;
 
-    @PostMapping(value = "/save" , consumes = { "multipart/form-data"} )
-    public ResponseEntity save(@RequestParam("image") MultipartFile file) throws SQLException, IOException {
+    @PostMapping(value = "/save/{id}" , consumes = { "multipart/form-data"} )
+    public ResponseEntity save(@PathVariable Long id ,@RequestParam("image") MultipartFile file) throws SQLException, IOException {
         Image image = new Image();
+        image.setPid(id);
         byte[] fileBytes = file.getBytes();
         Blob blob = new SerialBlob(fileBytes);
         image.setImage(blob);

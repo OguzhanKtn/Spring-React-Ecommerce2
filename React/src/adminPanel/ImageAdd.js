@@ -1,7 +1,11 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 function ImageAdd() {
+
+    const params = useParams()
+    const id = params.id
 
     const[image,setImage] = useState(null)
 
@@ -12,7 +16,7 @@ function ImageAdd() {
       formData.append('image', image);
   
       try {
-        const res = await axios.post('http://localhost:8090/image/save', formData, {
+        const res = await axios.post('http://localhost:8090/image/save/'+id, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
           },

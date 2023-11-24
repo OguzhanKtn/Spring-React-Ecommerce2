@@ -32,8 +32,8 @@ public class ProductController {
     }
 
     @GetMapping("/productList")
-    public ResponseEntity productList(@RequestParam(defaultValue = "0") int page){
-        return productService.allProducts(page);
+    public ResponseEntity productList(){
+        return productService.allProducts();
     }
 
     @GetMapping("/listByCategory/{cid}")

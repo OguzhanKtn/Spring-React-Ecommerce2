@@ -5,6 +5,12 @@ const config = axios.create({
     timeout:15000
 })
 
+const jwtToken = sessionStorage.getItem('jwt')
+
+const headers = {
+    Authorization :`Bearer ${jwtToken}`,
+}
+
 export const productAdd = (brand,model,price,stock,cid)=>{
     const sendObj = {
         brand:brand,
@@ -13,7 +19,7 @@ export const productAdd = (brand,model,price,stock,cid)=>{
         stock:stock,
         cid:cid
     }
-    return config.post('product/save',sendObj)
+    return config.post('product/save',sendObj,{headers})
 }
 
 export const productDelete = (pid)=>{
@@ -31,8 +37,8 @@ export const productUpdate = (pid,model,brand,price,stock)=>{
     return config.post('product/update',sendObj)
  }
 
- export const productList = (page)=>{
-    return config.get('product/productList?page='+page+'')
+ export const productList = ()=>{
+    return config.get('product/productList')
  }
 
  export const productsByCategory = (id)=>{
