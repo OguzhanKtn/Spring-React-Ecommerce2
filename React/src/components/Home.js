@@ -17,11 +17,10 @@ function Home() {
   }, [])
 
   useEffect(() => {
-    // Fetch images for all products
     Promise.all(products.map((item) => images(item.pid)))
       .then((imageResponses) => {
-        // Extract the image data from responses
         const imageList = imageResponses.map((res) => res.data.result);
+        console.log(imageList)
         setImagesList(imageList);
       })
       .catch((error) => {
@@ -47,7 +46,7 @@ function Home() {
               <h5 className="card-title">{item.brand}</h5>
               <p className="card-text">{item.model}</p>
               <p className="card-text">{item.price}$</p>
-              <NavLink to={"/detail/" + item.id} className="btn btn-primary">
+              <NavLink to={"/detail/" + item.pid} className="btn btn-primary">
                 Detail
               </NavLink>
             </div>

@@ -15,13 +15,13 @@ const[categories,setCategories] = useState([])
 const[products,setProducts] = useState([])
 
 useEffect(() => {
-  categoryList().then(res=>{
+ categoryList().then(res=>{
     setCategories(res.data.result)
   }) 
   productList().then(res=>{
     setProducts(res.data.products)
   })
-}, [])
+}, [products])
 
 const getOption = (event) => {
   const value = event.target.value;
