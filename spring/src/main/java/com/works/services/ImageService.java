@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.sql.Blob;
 import java.util.List;
 
 @Service
@@ -43,9 +44,17 @@ public class ImageService {
     }
 
     public ResponseEntity list(Long pid){
+        List<Image> images= imageRepository.findByPid(pid);
         try{
-            List<Image> images= imageRepository.findByPid(pid);
-            Rest rest = new Rest(true,images);
+            Blob blob = null;
+            for (Image image:images) {
+                if(image.getPid() == pid){
+                    blob = image.getImage();
+                }
+            }
+            int blobLength = (int) blob.length();
+            byte[] image = blob.getBytes(1, blobLength);
+            Rest rest = new Rest(true,image);
             ResponseEntity responseEntity = new ResponseEntity(rest, HttpStatus.OK);
             return responseEntity;
         }catch (Exception ex){
