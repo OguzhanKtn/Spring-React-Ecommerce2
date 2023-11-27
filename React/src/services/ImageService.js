@@ -9,6 +9,6 @@ export const imageDelete =(id)=>{
     return config.post('image/delete/'+id)
 }
 
-export const images = (id)=>{
-    return config.get('image/images/'+id)
+export const images = ()=>{
+    return config.get('image/images')
 }

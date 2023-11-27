@@ -2,6 +2,7 @@ package com.works.services;
 
 import com.works.configs.Rest;
 import com.works.entities.Image;
+import com.works.entities.dtos.ImageDto;
 import com.works.repositories.ImageRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -9,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.sql.Blob;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -43,18 +45,22 @@ public class ImageService {
         }
     }
 
-    public ResponseEntity list(Long pid){
-        List<Image> images= imageRepository.findByPid(pid);
+    public ResponseEntity list(){
+        List<Image> images= imageRepository.findAll();
+        List<ImageDto> imageDtos = new ArrayList<>();
         try{
             Blob blob = null;
             for (Image image:images) {
-                if(image.getPid() == pid){
-                    blob = image.getImage();
-                }
+                ImageDto imageDto = new ImageDto();
+                blob = image.getImage();
+                int blobLength = (int) blob.length();
+                byte[] img = blob.getBytes(1, blobLength);
+                imageDto.setPid(image.getPid());
+                imageDto.setImage(img);
+                imageDtos.add(imageDto);
             }
-            int blobLength = (int) blob.length();
-            byte[] image = blob.getBytes(1, blobLength);
-            Rest rest = new Rest(true,image);
+
+            Rest rest = new Rest(true,imageDtos);
             ResponseEntity responseEntity = new ResponseEntity(rest, HttpStatus.OK);
             return responseEntity;
         }catch (Exception ex){

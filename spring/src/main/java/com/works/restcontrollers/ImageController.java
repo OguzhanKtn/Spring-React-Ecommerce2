@@ -35,8 +35,8 @@ public class ImageController {
         return imageService.delete(id);
     }
 
-    @GetMapping("/images/{pid}")
-    public ResponseEntity list(@PathVariable Long pid){
-        return imageService.list(pid);
+    @GetMapping("/images")
+    public ResponseEntity list(){
+        return imageService.list();
     }
  }

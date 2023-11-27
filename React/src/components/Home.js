@@ -14,21 +14,13 @@ function Home() {
     setProducts(res.data.products)
    })
 
+   images().then(res=>{
+    setImagesList(res.data.result)
+   })
+
   }, [])
 
-  useEffect(() => {
-    Promise.all(products.map((item) => images(item.pid)))
-      .then((imageResponses) => {
-        const imageList = imageResponses.map((res) => res.data.result);
-        console.log(imageList)
-        setImagesList(imageList);
-      })
-      .catch((error) => {
-        console.error("Error fetching images:", error);
-      });
-  }, [products]);
 
-  
   return (
     <>
      <Navbar/>
@@ -38,9 +30,13 @@ function Home() {
           <div className="col-sm-3" key={index}>
           <div className="card">
             <img
-              src={imagesList[index]} 
+             src={
+              "data:image/png;base64," +
+              imagesList.find((i) => item.pid === i.pid)?.image
+            }
               style={{ height: 200 }}
               className="card-img-top"
+              alt={`Product ${item.pid}`}
             />
             <div className="card-body">
               <h5 className="card-title">{item.brand}</h5>
