@@ -1,19 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { NavLink} from "react-router-dom";
+import React, {useEffect, useState } from "react";
+import {NavLink} from "react-router-dom";
 import { categoryList } from "../services/CategoryService";
 import SignedOut from "./SignedOut";
 import SignedIn from "./SignedIn";
 
-function Navbar() {
+
+function Navbar(props) {
   const [categories, setCategories] = useState([]);
   const [isAuthenticated,setIsAuthenticated] = useState(false);
-
   const session = sessionStorage.getItem('jwt')
 
   function handleSignOut(){
     setIsAuthenticated(false)
     sessionStorage.removeItem('jwt')
     sessionStorage.removeItem('user')
+    props.signOut()
   }
  
   useEffect(() => {
