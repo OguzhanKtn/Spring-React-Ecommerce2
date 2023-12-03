@@ -12,3 +12,7 @@ export const imageDelete =(id)=>{
 export const images = ()=>{
     return config.get('image/images')
 }
+
+export const imagesById = (id)=>{
+    return config.get('image/listById/'+id)
+}

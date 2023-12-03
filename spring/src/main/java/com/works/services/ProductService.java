@@ -101,7 +101,8 @@ public class ProductService {
         Optional<Product> product = productRepository.findById(id);
         try{
             if(product.isPresent()){
-                ResponseEntity responseEntity = new ResponseEntity<>(product.get(),HttpStatus.OK);
+                Rest rest = new Rest(true,product.get());
+                ResponseEntity responseEntity = new ResponseEntity<>(rest,HttpStatus.OK);
                 return responseEntity;
             }
 

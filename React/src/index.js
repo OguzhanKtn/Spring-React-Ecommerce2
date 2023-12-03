@@ -9,6 +9,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Basket from "./components/Basket";
 import ImageAdd from "./adminPanel/ImageAdd";
 import ProductManager from "./adminPanel/ProductManager";
+import Detail from "./components/Detail";
 
 
 const router = (
@@ -19,6 +20,7 @@ const router = (
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/basket" element={<Basket/>} />
+      <Route path="/detail/:id" element={<Detail/>} />
       <Route path="/imageAdd/:id" element={<ImageAdd/>} />
       <Route path="/productManager" element={<ProductManager/>}/>
     </Routes>

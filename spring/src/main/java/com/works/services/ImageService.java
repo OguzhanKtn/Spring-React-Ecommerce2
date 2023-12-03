@@ -69,6 +69,28 @@ public class ImageService {
             return responseEntity;
         }
     }
-
+    public ResponseEntity listById(Long id){
+        List<Image> images= imageRepository.findByPid(id);
+        List<ImageDto> imageDtos = new ArrayList<>();
+        try{
+            Blob blob = null;
+            for (Image image:images) {
+                ImageDto imageDto = new ImageDto();
+                blob = image.getImage();
+                int blobLength = (int) blob.length();
+                byte[] img = blob.getBytes(1, blobLength);
+                imageDto.setPid(image.getPid());
+                imageDto.setImage(img);
+                imageDtos.add(imageDto);
+            }
+            Rest rest = new Rest(true,imageDtos);
+            ResponseEntity responseEntity = new ResponseEntity(rest, HttpStatus.OK);
+            return responseEntity;
+        }catch (Exception ex){
+            Rest rest = new Rest(false,ex.getMessage());
+            ResponseEntity responseEntity = new ResponseEntity(rest, HttpStatus.BAD_REQUEST);
+            return responseEntity;
+        }
+    }
 
 }

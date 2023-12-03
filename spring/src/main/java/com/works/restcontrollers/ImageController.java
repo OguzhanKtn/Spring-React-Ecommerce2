@@ -39,4 +39,9 @@ public class ImageController {
     public ResponseEntity list(){
         return imageService.list();
     }
+
+    @GetMapping("/listById/{id}")
+    public ResponseEntity listById(@PathVariable Long id){
+        return imageService.listById(id);
+    }
  }
