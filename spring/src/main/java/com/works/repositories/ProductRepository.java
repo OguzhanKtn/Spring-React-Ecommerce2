@@ -12,4 +12,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
             "where p.cid = ?1",nativeQuery = true)
     List<IProductCategory> productListByCategory(Integer cid);
 
+    List<Product> findByBrandLikeIgnoreCase(String brand);
+
+
+
 }

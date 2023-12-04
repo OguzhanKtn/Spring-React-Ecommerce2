@@ -7,6 +7,7 @@ import com.works.repositories.ProductRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -112,6 +113,20 @@ public class ProductService {
             return responseEntity;
         }
         return null;
+    }
+
+    public ResponseEntity search(String brand){
+        brand = "%"+brand+"%";
+        try {
+            List<Product> products = productRepository.findByBrandLikeIgnoreCase(brand);
+            Rest rest = new Rest(true,products);
+            ResponseEntity responseEntity = new ResponseEntity(rest,HttpStatus.OK);
+            return responseEntity;
+        }catch (Exception ex){
+            Rest rest = new Rest(false,ex.getMessage());
+            ResponseEntity responseEntity = new ResponseEntity(rest,HttpStatus.BAD_REQUEST);
+            return responseEntity;
+        }
     }
 
 }

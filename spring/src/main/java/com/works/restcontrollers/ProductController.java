@@ -45,4 +45,9 @@ public class ProductController {
     public ResponseEntity detail(@PathVariable Long pid){
         return productService.productDetail(pid);
     }
+
+    @GetMapping("/search")
+    public ResponseEntity search(@RequestParam(defaultValue = "") String brand){
+        return productService.search(brand);
+    }
 }
