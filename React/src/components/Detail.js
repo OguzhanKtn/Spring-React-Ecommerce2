@@ -14,16 +14,18 @@ const id = params.id
 
 const[product,setProduct] = useState(null)
 const[image,setImage] = useState([])
+const[imgPrd,setImgPrd] = useState("")
 
 useEffect(() => {
  productDetail(id).then(res =>{
     setProduct(res.data.result)
  })
  imagesById(id).then(res=>{
-    console.log(res.data.result)
     setImage(res.data.result)
+    setImgPrd(res.data.result[0].image)
  })
 }, [])
+
 
 const addBasket = (pid) => {
     const stSession = sessionStorage.getItem('user')
@@ -62,12 +64,12 @@ const goToBasket = () => {
             <button className="btn btn-danger" onClick={()=> addBasket(product.pid)}>
               <i className="bi bi-cart3"></i> Add Basket
             </button>
-            <button className="btn btn-primary ml-3" onClick={()=> goToBasket()}>
+            <button className="btn btn-primary" style={{marginLeft:"5px"}} onClick={()=> goToBasket()}>
               <i className="bi bi-cart3"></i> Go to basket
             </button>
           </div>
           <div className="col-sm-6">
-            <img src={"data:image/png;base64,"+image[0].image} className="img-fluid img-thumbnail" />
+            <img src={"data:image/png;base64,"+imgPrd} className="img-fluid img-thumbnail" />
           </div>
         </div>  
       )}
@@ -81,7 +83,7 @@ const goToBasket = () => {
                   className="col-2"
                   key={index}
                   role="button"
-                  onClick={() => setImage("data:image/png;base64,"+item.image)}
+                  onClick={() => setImgPrd(item.image)}
                 >
                   <img src={"data:image/png;base64,"+item.image} className="img-thumbnail" />
                 </div>
