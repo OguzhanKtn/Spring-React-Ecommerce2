@@ -21,7 +21,7 @@ public class ProductController {
         return productService.save(product);
     }
 
-    @PostMapping("/delete/{pid}")
+    @DeleteMapping("/delete/{pid}")
     public ResponseEntity productDelete(@PathVariable Long pid){
         return productService.productDelete(pid);
     }

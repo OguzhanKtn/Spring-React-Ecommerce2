@@ -23,7 +23,7 @@ export const productAdd = (brand,model,price,stock,cid)=>{
 }
 
 export const productDelete = (pid)=>{
-    return config.post('product/delete/'+pid)
+    return config.delete(`product/delete/${pid}`,{headers})
 }
 
 export const productUpdate = (pid,model,brand,price,stock)=>{
@@ -50,5 +50,5 @@ export const productUpdate = (pid,model,brand,price,stock)=>{
  }
 
  export const productSearch = (brand)=>{
-    return config.get('product/search?q='+brand+'')
+    return config.get(`product/search?q=${brand}`)
  }

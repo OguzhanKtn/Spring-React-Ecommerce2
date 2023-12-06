@@ -9,6 +9,16 @@ function Navbar(props) {
   const [categories, setCategories] = useState([]);
   const [isAuthenticated,setIsAuthenticated] = useState(false);
   const session = sessionStorage.getItem('jwt')
+  const [searchTerm, setSearchTerm] = useState('');
+
+  const handleSearchChange = (event) => {
+    setSearchTerm(event.target.value);
+  };
+
+  const handleSearchSubmit = (e) => {
+    e.preventDefault()
+    props.handleSearch(searchTerm)
+  };
 
   function handleSignOut(){
     setIsAuthenticated(false)
@@ -58,13 +68,14 @@ function Navbar(props) {
                 ))}
               </ul>
             </div>
-            <form class="d-flex" role="search">
+            <form class="d-flex" role="search" onSubmit={handleSearchSubmit}>
               <input
                 class="form-control me-2"
                 type="search"
                 placeholder="Ara"
                 aria-label="Search"
                 id="search"
+                onChange={handleSearchChange}
               />
               <button class="btn btn-outline-success" type="submit" id="search">
                 <span style={{ color: "white" }}>Ara</span>

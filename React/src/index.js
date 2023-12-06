@@ -10,6 +10,7 @@ import Basket from "./components/Basket";
 import ImageAdd from "./adminPanel/ImageAdd";
 import ProductManager from "./adminPanel/ProductManager";
 import Detail from "./components/Detail";
+import Search from "./components/Search";
 
 
 const router = (
@@ -18,6 +19,7 @@ const router = (
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/login" element={<Login />} />
+      <Route path="/search" element={<Search />} />
       <Route path="/register" element={<Register />} />
       <Route path="/basket" element={<Basket/>} />
       <Route path="/detail/:id" element={<Detail/>} />
