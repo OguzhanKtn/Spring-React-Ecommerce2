@@ -4,8 +4,10 @@ import { images } from "../services/ImageService";
 import { orderSave } from "../services/OrderService";
 import { toast } from "react-toastify";
 import { decrypt } from "../util";
+import { productSearch } from "../services/ProductService";
 
-function Search({searchResults}) {
+function Search(props) {
+  const [products, setProducts] = useState([]);
   const [imagesList, setImagesList] = useState([]);
   const [userId, setUserId] = useState("");
   const session = sessionStorage.getItem("user");
@@ -22,10 +24,13 @@ function Search({searchResults}) {
 
   
   useEffect(() => {
+    productSearch(props.handleSearch).then(res=>{
+      setProducts(res.data.result)
+    })
     images().then((res) => {
       setImagesList(res.data.result);
     });
-  }, []);
+  }, [props.handleSearch]);
 
   const addBasket = async (id) => {
     if (userId) {
@@ -42,7 +47,7 @@ function Search({searchResults}) {
     <>
       <div className="container mt-3">
         <div className="row">
-          {searchResults.map((item, index) => (
+          {products.map((item, index) => (
             <div className="col-sm-3" key={index}>
               <div className="card">
                 <img

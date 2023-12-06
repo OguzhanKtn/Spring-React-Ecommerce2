@@ -3,6 +3,8 @@ import {NavLink} from "react-router-dom";
 import { categoryList } from "../services/CategoryService";
 import SignedOut from "./SignedOut";
 import SignedIn from "./SignedIn";
+import Home from "./Home";
+import Search from "./Search";
 
 
 function Navbar(props) {
@@ -10,14 +12,14 @@ function Navbar(props) {
   const [isAuthenticated,setIsAuthenticated] = useState(false);
   const session = sessionStorage.getItem('jwt')
   const [searchTerm, setSearchTerm] = useState('');
-
+  const [isSearched,setIsSearched] = useState(false)
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
   const handleSearchSubmit = (e) => {
     e.preventDefault()
-    props.handleSearch(searchTerm)
+    setIsSearched(true)
   };
 
   function handleSignOut(){
@@ -161,6 +163,7 @@ function Navbar(props) {
             </div>
           </div>
         </nav>
+        {isSearched?<Search handleSearch={searchTerm} />:""}
       </div>
     </>
   );

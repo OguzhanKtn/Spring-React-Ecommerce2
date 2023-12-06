@@ -1,6 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import Home from "./components/Home";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Register from "./components/Register";
@@ -11,6 +10,7 @@ import ImageAdd from "./adminPanel/ImageAdd";
 import ProductManager from "./adminPanel/ProductManager";
 import Detail from "./components/Detail";
 import Search from "./components/Search";
+import Home from "./components/Home";
 
 
 const router = (
