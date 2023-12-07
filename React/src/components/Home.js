@@ -1,7 +1,6 @@
 import React, {useEffect, useState } from "react";
-import Navbar from "./Navbar";
 import { productList } from "../services/ProductService";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { images } from "../services/ImageService";
 import { orderSave } from "../services/OrderService";
 import { toast } from "react-toastify";
@@ -12,6 +11,7 @@ function Home() {
   const [imagesList, setImagesList] = useState([]);
   const [userId, setUserId] = useState("");
   const session = sessionStorage.getItem("user")
+  const navigate = useNavigate()
 
   useEffect(() => {
     if(session){
@@ -23,10 +23,6 @@ function Home() {
     }
   }, []);
 
-  const handleLogout = () => {
-    setUserId(null);
-  };
-
   useEffect(() => {
     productList().then((res) => {
       setProducts(res.data.products);
@@ -37,21 +33,23 @@ function Home() {
     });
   }, []);
 
-  const addBasket = async (id) => {
-    if (userId) {
-      await orderSave(id, userId).then((res) => {
-        if (res.data.status == true) {
-          toast.success("Ürün sepete eklendi!");
-        }
-      });
-    } else {
-      toast.error("Lütfen giriş yapınız !");
+  const addBasket =async (id) => {
+    if(session){
+      const res = await orderSave(id, userId);
+      if (res.data.status === true) {
+        toast.success("Ürün sepete eklendi!");
+      } else {
+        toast.error("Ürün sepete eklenirken bir hata oluştu.");
+      }  
+    }else{
+      navigate("/login")
     }
+     
   };
+  
 
   return (
     <>
-     <Navbar signOut={handleLogout} />
       <div className="container mt-3">
         <div className="row">
           {products.map((item, index) => (

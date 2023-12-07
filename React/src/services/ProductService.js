@@ -49,6 +49,6 @@ export const productUpdate = (pid,model,brand,price,stock)=>{
     return config.get('product/detail/'+id)
  }
 
- export const productSearch = (brand)=>{
-    return config.get(`product/search?q=${brand}`)
+ export const productSearch = (q)=>{
+    return config.get(`product/search?q=${q}`)
  }

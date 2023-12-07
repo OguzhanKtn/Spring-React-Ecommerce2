@@ -11,13 +11,14 @@ import ProductManager from "./adminPanel/ProductManager";
 import Detail from "./components/Detail";
 import Search from "./components/Search";
 import Home from "./components/Home";
+import Navbar from "./components/Navbar";
 
 
 const router = (
   <BrowserRouter>
   <ToastContainer position='top-center' transition={Flip} autoClose={5000} />
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Navbar />} />
       <Route path="/login" element={<Login />} />
       <Route path="/search" element={<Search />} />
       <Route path="/register" element={<Register />} />

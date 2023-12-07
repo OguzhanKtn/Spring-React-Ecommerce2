@@ -5,16 +5,21 @@ const config = axios.create({
     timeout:15000
 })
 
+const jwtToken = sessionStorage.getItem('jwt')
+
+const headers = {
+    Authorization :`Bearer ${jwtToken}`,
+}
 export const orderSave = (pid,uid)=>{
     const sendObj = {
         pid:pid,
         uid:uid
     }
-    return config.post('order/save',sendObj)
+    return config.post('order/save',sendObj,{headers})
 }
 
 export const orderDelete =(id)=>{
-    return config.post('order/delete/'+id)
+    return config.delete('order/delete/'+id,{headers})
 }
 
 export const orderList = ()=>{
@@ -22,5 +27,5 @@ export const orderList = ()=>{
 }
 
 export const orderListByUser = (id)=>{
-    return config.get('order/listByUser/'+id)
+    return config.get('order/listByUser/'+id,{headers})
 }

@@ -18,7 +18,7 @@ public class OrderController {
     public ResponseEntity save(@RequestBody Order order){
         return orderService.save(order);
     }
-    @PostMapping("/delete/{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity delete(@PathVariable Long id){
         return orderService.delete(id);
     }

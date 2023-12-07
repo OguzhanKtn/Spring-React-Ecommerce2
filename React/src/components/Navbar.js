@@ -7,18 +7,15 @@ import Home from "./Home";
 import Search from "./Search";
 
 
-function Navbar(props) {
+function Navbar() {
   const [categories, setCategories] = useState([]);
   const [isAuthenticated,setIsAuthenticated] = useState(false);
   const session = sessionStorage.getItem('jwt')
   const [searchTerm, setSearchTerm] = useState('');
   const [isSearched,setIsSearched] = useState(false)
+
   const handleSearchChange = (event) => {
     setSearchTerm(event.target.value);
-  };
-
-  const handleSearchSubmit = (e) => {
-    e.preventDefault()
     setIsSearched(true)
   };
 
@@ -26,7 +23,6 @@ function Navbar(props) {
     setIsAuthenticated(false)
     sessionStorage.removeItem('jwt')
     sessionStorage.removeItem('user')
-    props.signOut()
   }
  
   useEffect(() => {
@@ -70,7 +66,7 @@ function Navbar(props) {
                 ))}
               </ul>
             </div>
-            <form class="d-flex" role="search" onSubmit={handleSearchSubmit}>
+            <div className="d-flex">
               <input
                 class="form-control me-2"
                 type="search"
@@ -82,7 +78,7 @@ function Navbar(props) {
               <button class="btn btn-outline-success" type="submit" id="search">
                 <span style={{ color: "white" }}>Ara</span>
               </button>
-            </form>
+              </div>
             {isAuthenticated?<SignedIn SignOut={handleSignOut}/>:<SignedOut/>} 
           </div>
         </div>
@@ -163,7 +159,7 @@ function Navbar(props) {
             </div>
           </div>
         </nav>
-        {isSearched?<Search handleSearch={searchTerm} />:""}
+        {isSearched?<Search handleSearch={searchTerm} />:<Home SignOut={handleSignOut}/>}
       </div>
     </>
   );

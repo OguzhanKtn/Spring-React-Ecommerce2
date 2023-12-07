@@ -33,14 +33,21 @@ function Search(props) {
   }, [props.handleSearch]);
 
   const addBasket = async (id) => {
-    if (userId) {
-      await orderSave(id, userId).then((res) => {
-        if (res.data.status == true) {
-          toast.success("Ürün sepete eklendi!");
-        }
-      });
-    } else {
-      toast.error("Lütfen giriş yapınız !");
+    try {
+      const res = await orderSave(id, userId);
+  
+      if (res.data.status === true) {
+        toast.success("Ürün sepete eklendi!");
+      } else {
+        toast.error("Ürün sepete eklenirken bir hata oluştu.");
+      }
+    } catch (error) {
+      // Handle specific HTTP error codes
+      if (error.response && error.response.status === 500) {
+        toast.error("Internal Server Error: Sunucu hatası!");
+      } else {
+        toast.error("Bir hata oluştu!");
+      }
     }
   };
   return (

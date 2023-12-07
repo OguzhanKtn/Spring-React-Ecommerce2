@@ -47,7 +47,7 @@ public class ProductController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity search(@RequestParam(defaultValue = "") String brand){
-        return productService.search(brand);
+    public ResponseEntity search(@RequestParam(defaultValue = "") String q){
+        return productService.search(q);
     }
 }

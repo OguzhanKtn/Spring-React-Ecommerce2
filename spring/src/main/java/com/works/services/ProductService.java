@@ -115,10 +115,10 @@ public class ProductService {
         return null;
     }
 
-    public ResponseEntity search(String brand){
-        brand = "%"+brand+"%";
+    public ResponseEntity search(String q){
+        q = "%"+q+"%";
         try {
-            List<Product> products = productRepository.findByBrandLikeIgnoreCase(brand);
+            List<Product> products = productRepository.findByBrandLikeIgnoreCase(q);
             Rest rest = new Rest(true,products);
             ResponseEntity responseEntity = new ResponseEntity(rest,HttpStatus.OK);
             return responseEntity;
